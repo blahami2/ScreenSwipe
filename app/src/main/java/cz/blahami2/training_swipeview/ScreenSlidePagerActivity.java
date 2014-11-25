@@ -19,14 +19,15 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
-    private static final int LOOPS = 100;
+    public static final int NUM_PAGES = 5;
+    public static final int LOOPS = 100;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
      */
     private ViewPager mPager;
+    private DotPageIndicatorView mPageIndicator;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -52,11 +53,23 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         ScreenSlidePageFragment.texts.add("settings");
         ScreenSlidePageFragment.texts.add("blank");
 
+        DotPageIndicatorView.dotViews.add(findViewById(R.id.indi_0));
+        DotPageIndicatorView.dotViews.add(findViewById(R.id.indi_1));
+        DotPageIndicatorView.dotViews.add(findViewById(R.id.indi_2));
+        DotPageIndicatorView.dotViews.add(findViewById(R.id.indi_3));
+        DotPageIndicatorView.dotViews.add(findViewById(R.id.indi_4));
+
+
+        mPageIndicator = (DotPageIndicatorView) findViewById(R.id.indicator);
+        mPageIndicator.setCount(NUM_PAGES);
+        mPageIndicator.setCurrent(0);
+
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(NUM_PAGES * LOOPS / 2);
+
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i2) {
@@ -81,6 +94,8 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
                     }
                     Log.d("ChangeListener: ", "selected 2: " + mPager.getCurrentItem());
 
+                    mPageIndicator.setCurrent((mPager.getCurrentItem()) % NUM_PAGES);
+
 
                     tts = new TextToSpeech(getApplicationContext(),
                             new TextToSpeech.OnInitListener(){
@@ -88,7 +103,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
                                 @Override
                                 public void onInit(int status) {
                                     if(status != TextToSpeech.ERROR){
-                                        tts.setLanguage(Locale.UK);
+                                        tts.setLanguage(Locale.US);
                                     }
                                     if (status == TextToSpeech.SUCCESS) {
                                         int idx = mPager.getCurrentItem() % ScreenSlidePageFragment.texts.size();
@@ -108,6 +123,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         mPager.setPadding(margin, 0, margin, 0);
         mPager.setClipToPadding(false);
 //        mPager.setPageMargin(-margin/2);
+
     }
 
     @Override
