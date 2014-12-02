@@ -1,0 +1,172 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    android:background="@color/music_color_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <SeekBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/music_progress"
+            android:progress="30"
+            android:max="100"
+            android:layout_alignBottom="@+id/music_current_time"
+            android:layout_toLeftOf="@+id/music_end_time"
+            android:layout_toRightOf="@+id/music_current_time" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_above="@+id/music_progress"
+            android:id="@+id/linearLayout"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp">
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/music_prev"
+                android:src="@android:drawable/ic_media_previous"
+                android:contentDescription="previous"
+                android:layout_weight="0.2"
+                android:scaleType="fitXY"
+                android:background="@drawable/music_button"
+                android:clickable="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/music_rew"
+                android:src="@android:drawable/ic_media_rew"
+                android:contentDescription="rewind"
+                android:layout_weight="0.2"
+                android:scaleType="fitXY"
+                android:clickable="true"
+                android:background="@drawable/music_button"
+                android:layout_marginRight="5dp" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/music_play_pause"
+                android:clickable="true"
+                android:src="@android:drawable/ic_media_play"
+                android:contentDescription="play or pause"
+                android:layout_weight="0.2"
+                android:scaleType="fitXY"
+                android:background="@drawable/music_button"
+                android:layout_marginRight="5dp" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/music_forw"
+                android:src="@android:drawable/ic_media_ff"
+                android:contentDescription="forward"
+                android:layout_weight="0.2"
+                android:scaleType="fitXY"
+                android:background="@drawable/music_button"
+                android:clickable="true"
+                android:layout_marginRight="5dp" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/music_next"
+                android:contentDescription="next"
+                android:layout_weight="0.2"
+                android:adjustViewBounds="true"
+                android:src="@android:drawable/ic_media_next"
+                android:scaleType="fitXY"
+                android:background="@drawable/music_button"
+                android:clickable="true"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01:12"
+            android:id="@+id/music_current_time"
+            android:singleLine="true"
+            android:textSize="40sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="04:00"
+            android:id="@+id/music_end_time"
+            android:textSize="40sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Interpret: some random interpret"
+            android:id="@+id/textView3"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:textSize="40sp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Album: some random album"
+            android:id="@+id/textView4"
+            android:layout_above="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:textSize="40sp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Title: some random title"
+            android:id="@+id/textView5"
+            android:layout_above="@+id/textView4"
+            android:layout_alignParentLeft="true"
+            android:textSize="40sp"
+            android:layout_marginLeft="10dp" />
+
+        <cz.blahami2.training_swipeview.VerticalSeekBar
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/volume"
+            android:max="100"
+            android:progress="20"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/textView5" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView"
+            android:src="@android:drawable/ic_lock_silent_mode_off"
+            android:focusableInTouchMode="false"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/volume" />
+
+    </RelativeLayout>
+
+</ScrollView>

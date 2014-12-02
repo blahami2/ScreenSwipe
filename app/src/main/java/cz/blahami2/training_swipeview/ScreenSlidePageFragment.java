@@ -62,10 +62,15 @@ public class ScreenSlidePageFragment extends Fragment {
         super.onViewStateRestored(savedInstanceState);
     }
 
-    public void newView(View view){
+    public void newView(View view) {
         Log.d("Fragment.newView", "clicked");
-        Intent intent = new Intent(getActivity(), ViewActivity.class);
-        intent.putExtra("LAYOUT", layouts.get(getIdx() % layouts.size()));
+        Intent intent;
+        if (getIdx() % layouts.size() == 2) { // music
+            intent = new Intent(getActivity(), MusicActivityRoot.class);
+        } else {
+            intent = new Intent(getActivity(), ViewActivity.class);
+            intent.putExtra("LAYOUT", layouts.get(getIdx() % layouts.size()));
+        }
         startActivity(intent);
     }
 
@@ -78,7 +83,7 @@ public class ScreenSlidePageFragment extends Fragment {
         return inflater.inflate(layouts.get(getIdx() % layouts.size()), container, false);
     }
 
-    private final int getIdx(){
+    private final int getIdx() {
         int idx = getArguments().getInt("screenSlidePageFragment_idx");
         return idx;
     }

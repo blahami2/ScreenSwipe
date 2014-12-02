@@ -1,5 +1,6 @@
 package cz.blahami2.training_swipeview;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 
 import java.util.Locale;
 
@@ -60,6 +62,9 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         DotPageIndicatorView.dotViews.add(findViewById(R.id.indi_4));
 
 
+        ColorDrawable colorDrawable = (ColorDrawable) getResources().getDrawable(R.color.root_color_dark);
+        getActionBar().setBackgroundDrawable(colorDrawable);
+
         mPageIndicator = (DotPageIndicatorView) findViewById(R.id.indicator);
         mPageIndicator.setCount(NUM_PAGES);
         mPageIndicator.setCurrent(0);
@@ -93,6 +98,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
                         mPager.setCurrentItem(1, false);
                     }
                     Log.d("ChangeListener: ", "selected 2: " + mPager.getCurrentItem());
+                    View focusedChild = mPager.getFocusedChild();
 
                     mPageIndicator.setCurrent((mPager.getCurrentItem()) % NUM_PAGES);
 

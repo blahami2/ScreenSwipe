@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
+    android:shape="rectangle">
 
-    <solid android:color="@color/root_color_dark" />
-    <stroke android:color="#fff"
+    <stroke android:color="@color/music_color_main"
         android:width="2dp"/>
+    <solid android:color="@color/music_color_main" />
 </shape>

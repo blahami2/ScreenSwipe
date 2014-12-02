@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="music_color_main">#8bc34a</color>
+    <color name="music_color_light">#dcedc8</color>
+    <color name="music_color_dark">#558b2f</color>
+    <color name="music_color_accent">#40c4ff</color>
+    <color name="music_color_background">#dcedc8</color>
+    <color name="root_color_dark">#37474f</color>
+    <color name="root_color_main"> #607d8b</color>
+    <color name="root_color_light">#90a4ae</color>
+    <color name="root_color_accent">#ffffff</color>
+</resources>
